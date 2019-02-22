@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel = "stylesheet" href = "https://code.jquery.com/qunit/qunit-2.9.1.css">
+    <script src = "https://code.jquery.com/qunit/qunit-2.9.1.js"></script>
 </head>
 
 <body class="bgimg">
@@ -44,10 +46,21 @@
         <input id="inputfoot" type="number" placeholder="Foot" oninput="FootYardConvertor(this.value)"
             onchange="FootYardConvertor(this.value)">
         <p>Foot in Yards: <span id="output"></span></p>
-
+       <!--retrieving previous results that are stored in local storage-->
+       <input type="submit" value="Retrieve" id="retrieve">
+        <input type="button" value="clear"id="clearall">
+        <h3>Good to see u!</h3>
+        <button id="Goodto" class="btn">Mouse over me!</button>
+        <p id="Good"></p>
         <script>
-            function FootYardConvertor(valNum) {
-                document.getElementById("output").innerHTML = valNum * 0.33333;
+            document.getElementById('inputfoot').addEventListener('input',FootYardConvertor);
+            function FootYardConvertor() {
+                let foot=parseInt(document.getElementById('inputfoot').value);
+               let yard=0.33333*foot;
+            document.getElementById('output').innerHTML=yard;
+            localStorage.setItem("Value",yard);
+            return yard;
+                
             }
         </script>
     </main>
@@ -63,6 +76,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+        <script src="test.js"></script>
 
 </body>
 
